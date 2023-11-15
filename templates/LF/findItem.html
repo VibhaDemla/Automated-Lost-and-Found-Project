@@ -1,0 +1,352 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <title>Lost And Found</title>
+    <style>
+        body 
+        {
+          background: #f2f2f2;
+          margin: 0;
+          font-size:18px;
+          background-color:#eaeaea;
+        }
+
+        .container
+        {
+            position:absolute;
+            background: #fff;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            padding: 20px;
+
+            width:50%;
+            height:70%;
+
+            right:15%;
+            top:16%;
+
+            color: #4C4C6D;
+            font-weight: bold;
+
+        }
+
+        .container button {
+            position:absolute;
+            width: 30%;
+            padding: 10px;
+            
+            background: #007bff;
+            color: #fff;
+            background-color: #363062;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            left:34%;
+            bottom:40%;
+
+        }
+
+        .container button:hover {
+            background: #654E92;
+        }
+
+        .topnav 
+        {
+          overflow: visible;
+          background-color: #363062;
+          width : 100%;
+          height : 7%;
+          position: fixed;
+          float:right;
+        }
+
+        .topnav a 
+        {
+          float: right;
+          font-size: 16px;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          left:85%;
+        }   
+
+        .dropdown 
+        {
+          overflow: hidden;
+          float:right;
+        }
+
+        .dropdown .dropbtn 
+        {
+          font-size: 16px;  
+          border: none;
+          outline: none;
+          color: white;
+          padding: 14px 16px;
+          background-color: inherit;
+          font-family: inherit;
+          margin: 10;
+
+          float:right;
+        }
+
+        .topnav a:hover, .dropdown:hover .dropbtn 
+        {
+          background-color: #654E92;
+        }
+
+        .dropdown-content 
+        {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+
+        .dropdown-content a 
+        {
+          float: none;
+          color: black;
+          padding: 8px;
+          text-decoration: none;
+          display: block;
+          text-align: left;
+          font-family: "Times New Roman", Times, serif;
+          margin-left:10px;
+          margin-right:10px;
+        }
+
+        .dropdown-content a:hover 
+        {
+          background-color: #b8b8d1;
+        }
+
+        .dropdown:hover .dropdown-content 
+        {
+          display: block;
+          margin-top:52px;
+          width:200px;
+          height:145px;
+          right:1px;
+          text-align: center;
+        }
+
+        .sidenav {
+          height: 100%;
+          width: 160px;
+          position: fixed;
+          z-index: 1;
+          top: 0;
+          left: 0;
+          background-color: #F7F7F7;
+          overflow-x: hidden;
+          padding-top: 0px;
+          box-shadow: 0 4px 15px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidenav a {
+          width : 208px;
+
+          padding-right:20px;
+          padding-left:20px;
+          padding-top:20px;
+          padding-bottom:20px;
+
+          margin-left:-20px;
+          text-decoration: none;
+          font-size: 20px;
+          color: black;
+          background-color: #F7F7F7;
+          display: block;
+          font-family: 'Roboto Slab', serif;
+          font-size: 18px;
+          padding-left:30px;
+
+        }
+
+        .sidenav a:hover {
+          color: black;
+          background-color: #DDDDDD;
+
+        }
+
+        .sidenav a.active {
+          background-color: #210124;
+          color: white;
+          padding-right:25px;
+          padding-left:55px;
+          padding-top:16px;
+          padding-bottom:16px;
+        }
+
+        textarea {
+          width: 80%;
+          height: 200px;
+          margin-top:10%;
+          margin-left:10%;
+          padding: 12px 20px;
+          box-sizing: border-box;
+          border: 2px solid #ccc;
+          border-radius: 4px;
+          background-color: #f8f8f8;
+          font-size: 16px;
+          resize: none;
+          border: 2px solid #176B87;
+          border-radius: 5px;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    
+    <div class="sidenav" style = "top: 51px;width:15%">
+        
+      <a  href="userDashboard" style = "color:#512B58;font-weight:bold;"><i class="fa-solid fa-gauge-high fa-lg"></i>    Dashboard {{ status }}</a>
+
+      <a class = "active" href="findItem" style = "color:white ;font-size: 21px; font-weight:bold;padding-left: 36px;"><i class="fa-solid fa-magnifying-glass fa-lg"> </i>    Find a Lost Item</a>
+
+      <a href="#clients" style = "color:#512B58;font-weight:bold;font-size: 19px;"><i class="fa-solid fa-plus fa-lg" ></i>    Report a Lost Item</a>
+
+      <a  href="uploadImage" style = "color:#512B58; font-weight:bold;padding-left: 29px;"><i class="fa-solid fa-plus fa-lg" ></i>    Report a Found Item</a>
+      
+    </div>
+
+    <div class="topnav">
+      
+
+      <img src="{% static 'LF/images/logo11.png' %}" alt = "LOGO" style="width:230px;height:auto;position: absolute; bottom: 2px;float:left;"> 
+      
+      <!--<img src="logo5.jpg" alt = "LOGO" style="width:230px;height:auto;position: absolute; bottom: -40px;">-->
+
+      <a href="/notifications" style="width:80px;height:auto;position: absolute; bottom: 2px;float:right;"><i class="fa-regular fa-bell fa-xl"></i></i></a>
+
+      {% csrf_token %}  
+      <div class="dropdown">
+        <button class="dropbtn" style = "width:120px;height:50px;margin-top:1px;"> 
+          <i class="fa-solid fa-user-tie fa-xl"></i>
+        </button>
+        <div class="dropdown-content">
+          <p style = "font-family: Sofia, sans-serif;font-size:20px;">Hello {{ user.first_name }}  <p>
+          <a href="#"><i class="fa-solid fa-pen-to-square fa-lg"></i>    Change Password</a>
+
+          <a href="/signout" ><i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i>    Sign Out</a>
+        </div>
+      </div> 
+    </div>
+
+    <div class = container>
+ 
+        
+        <form action="/findItem" method = "post" >
+          {% csrf_token %}
+
+          <p style = "position: absolute; bottom:86%;right:26%; font-family: roboto,sans-serif;font-size:20px;">Let us help you get your lost item back..</p>
+
+          <p  style = " margin-top:52px;margin-left:2%;margin-bottom:1px;">Select the item you lost.</p>
+          <input type="text" name="item_type" list="items"style = "width:90%;font-size: 15px;padding: 10px;background-color: #f8f8f8;border: 2px solid #caced1;border-radius: 0.25rem;color: #000;cursor: pointer;margin: 2px 15px;">
+
+              <datalist name="items" id="items">
+
+                <option value="ID Card">ID Card</option>
+                <option value="Laptop">Laptop</option>
+                <option value="Keys">Keys</option>
+                <option value="Mobile">Mobile</option>
+                <option value="Tablet">Tablet</option>
+                <option value="Charger">Charger</option>
+                <option value="Backpack">Backpack</option>
+                <option value="Wallet">Wallet</option>
+                <option value="Money">Money</option>
+                <option value="Card">Debit/Credit Card</option>
+                <option value="Earphones">Earphones / Earpods</option>
+                <option value="Eyewear">Eyeglass</option>
+                <option value="Apparel">Apparel</option>
+                <option value="Jewellery">Jewellery</option>
+                <option value="Watch">Watch</option>
+                <option value="Other(Please Specify Here)">Other(Please Specify Here)</option>
+
+            </datalist> 
+
+          <p  style = " margin-top:20px;margin-left:2%;margin-bottom:1px;">Since when is your item missing?</p>
+
+          <input type="date" name="date_lost" required style = "width:90%;font-size: 15px;padding: 10px;background-color: #f8f8f8;border: 2px solid #caced1;border-radius: 0.25rem;color: #000;cursor: pointer;margin: 2px 15px;">
+
+          <p style = "margin-top:20px;margin-left:2%;margin-bottom:1px;">Please provide a brief description of the item...</p>
+
+          <textarea rows="4" cols="50" placeholder="Example : I lost my white apple earpods near Admin Block." name = "description" style = "margin-top:0.5%;margin-left:2%;width: 93%;border: 2px solid #caced1;border-radius: 0.25rem;"></textarea>
+
+          <button type = "submit" style = "position: :absolute;right:26.5%;bottom:18px;font-size: 18px;">Proceed</button>
+
+
+          {% for message in messages %}
+            <p align = "center" style = "position: absolute;bottom:100px;right:160px;font-size: 20px;color:#445D48"><strong>Message : </strong>{{ message }}</p>
+          {% endfor %}
+
+        </form>
+    </div>
+
+
+</body>
+</html>
+
+<!--<select name = "item_type" id="customOption" onchange="checkCustomOption(this)">
+
+             
+
+                <option value="ID Card">ID Card</option>
+                <option value="Laptop">Laptop</option>
+                <option value="Keys">Keys</option>
+                <option value="Mobile">Mobile</option>
+                <option value="Tablet">Tablet</option>
+                <option value="Charger">Charger</option>
+                <option value="Backpack">Backpack</option>
+                <option value="Wallet">Wallet</option>
+                <option value="Money">Money</option>
+                <option value="Card">Debit/Credit Card</option>
+                <option value="Earphones">Earphones / Earpods</option>
+                <option value="Eyewear">Eyeglass</option>
+                <option value="Apparel">Apparel</option>
+                <option value="Jewellery">Jewellery</option>
+                <option value="Watch">Watch</option>
+                <option value="custom">Other</option>
+
+           
+           </select> 
+           <input type="text" name = "item_type" id="customInput" style="display: none;">
+          <button onclick="addCustomOption()">Add</button> 
+<script>
+        function checkCustomOption(select) {
+            const customInput = document.getElementById('customInput');
+            if (select.value === 'custom') {
+                customInput.style.display = 'block';
+            } else {
+                customInput.style.display = 'none';
+            }
+        }
+
+        function addCustomOption() {
+            const select = document.getElementById('customOption');
+            const customInput = document.getElementById('customInput');
+
+            if (customInput.value.trim() !== '') {
+                const option = document.createElement('option');
+                option.value = customInput.value;
+                option.textContent = customInput.value;
+                select.appendChild(option);
+                customInput.value = '';
+            }
+        }
+</script>-->

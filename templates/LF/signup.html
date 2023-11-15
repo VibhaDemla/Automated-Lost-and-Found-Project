@@ -1,0 +1,222 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1024, initial-scale=0.42, maximum-scale=2, user-scalable=yes">
+
+    <title>Modern Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            font-family: "Times New Roman", Times, serif;
+
+        }
+
+        .login-container {
+            
+            background: #fff;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            
+            min-height:65%;
+            max-width:500px;
+            min-width:350px;
+
+            padding: 20px 20px 10px 20px;
+            margin: 2% auto 0.5%;
+
+        }
+
+        .login-container .insideText{
+            font-size: 18px;
+            margin : 15px 2px 1px 2px;
+        }
+
+        .login-container h2 {
+            text-align: center;
+            color: #009698;
+            font-family: "Times New Roman", Times, serif;
+            font-size:25px;
+            font-weight: bold;
+            padding-top:2px;
+            padding-bottom:0px;
+            margin-bottom: 4px;
+            margin-top: 4px;
+        }
+
+        .login-form {
+            padding: 2px 20px 10px 20px;
+        }
+
+        .login-form input {
+            width: 90%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+
+        }
+
+        .login-form button {
+            margin:12px 0px 0px 25%;
+            width: 50%;
+            padding: 10px;
+            background: #007bff;
+            color: #fff;
+            background-color: #363062;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-form button:hover {
+            background: #654E92;
+        }
+
+        .login-form .forgot-password {
+            text-align: right;
+            margin-top: 2 0px;
+        }
+
+        .login-form .forgot-password a {
+            text-decoration: none;
+            color: #007bff;
+            margin-right: 10px;
+        }
+
+        .login-form .forgot-password a:hover {
+            text-decoration: underline;
+
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 40px;
+            padding-top:10px;
+        }
+
+        .signup-link a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .topnav {
+          overflow: hidden;
+          background-color: #363062;
+          width : 100%;
+          height: 50px;
+          position: fixed;
+          top: 0;
+          padding:1px 0px 1px 0px;
+
+        }
+
+        .topnav a {
+            font-weight: bold;
+          float: right;
+          color: white;
+          text-align: center;
+          padding: 20px 16px;
+          text-decoration: none;
+          font-size: 20px;
+          margin-top: -7px;
+          font-family: "Times New Roman", Times, serif;
+          width:100px;
+        }
+
+        .topnav a:hover {
+          background-color: #654E92;
+          color: black;
+          font-family: "Times New Roman", Times, serif;
+        }
+
+        .topnav a.active {
+          background-color: #232D3F;
+          color: white;
+          font-family: "Times New Roman", Times, serif;
+        }
+
+        .topnav .logo-image{
+            width:230px;
+            height:auto;
+            padding-top:2px;
+            padding-left:2px;
+            float:left;
+        }
+
+        hr {
+          display: block;
+          margin: 0 auto; /* Center horizontally */
+          border-style: inset;
+          border-width: 1px;
+          width: 600px;
+        }
+
+        .login-text{
+            font-size: 41px;
+            color:#009698;
+            margin: 60px auto 5px auto;
+            text-align: center;
+        }
+
+        .messages
+        {
+            margin: 1px 1px 1px 1px;
+            font-size: 20px;
+            color:#445D48
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="topnav">
+      <img class = "logo-image" src="{% static 'LF/images/logo11.png' %}" alt = "LOGO" >
+      <a href="signin">Log In</a>
+      <a class="active" href="signup">Sign Up</a>
+    </div>
+    
+    <p class = "login-text">Sign Up</p>
+
+    <hr>
+
+    <div class="login-container">
+
+        <h2>Create an Account</h2>
+        
+        <form action="/signup" method = "post" form class="login-form">
+        {% csrf_token %}
+            <p class = "insideText">Email *</p>
+            <input type="email" id = "email" name = "email" required>
+
+            <p class = "insideText">Name *</p>            
+            <input type="text" id = "name" name = "name" required >
+
+            <p class = "insideText">Phone *</p>
+            <input type="text" id = "phone" name = "phone" required>
+
+            <p class = "insideText">Password *</p>
+            <input type="password" id = "pass1" name = "pass1" required>
+
+            <p class = "insideText">Confirm Password *</p>
+            <input type="password" id = "pass2" name = "pass2" required>
+
+
+            <button type="submit" >Sign Up</button>
+
+        </form>
+
+    </div>
+
+    {% for message in messages %}
+            <p class = "messages" align = "center" style = "margin-top: 0px;" ><strong>Message : </strong>{{ message }}</p>
+    {% endfor %}
+
+    
+</body>
+</html>

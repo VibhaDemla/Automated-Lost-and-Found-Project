@@ -1,0 +1,27 @@
+<!-- loading.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loading Page</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="loading-message">Loading...</div>
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: '{% url 'long_running_function' %}',
+                type: 'GET',
+                success: function (data) {
+                    // Redirect to the next page upon completion
+                    window.location.href = '{% url 'next_page' %}';
+                },
+                error: function () {
+                    $('#loading-message').text('An error occurred.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

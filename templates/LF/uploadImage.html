@@ -1,0 +1,369 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1024, initial-scale=0.4, maximum-scale=1.5, user-scalable=yes">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <title>Lost And Found</title>
+
+    <style>
+        body 
+        {
+          background: #f2f2f2;
+          margin: 0;
+          font-size:18px;
+          background-color:#eaeaea;
+        }
+
+        .container
+        {
+            
+            background: #fff;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+           
+
+            max-width:50%;
+            min-height:350px;
+
+
+            color: #4C4C6D;
+            font-weight: bold;
+
+            margin:150px 15% auto 35%;
+
+        }
+
+        .container button {
+            position:absolute;
+            width: 40%;
+            padding: 10px;
+            
+            background: #007bff;
+            color: #fff;
+            background-color: #93B1A6;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            left:31%;
+            bottom:35%;
+
+        }
+
+        .container button:hover {
+            background: #654E92;
+            background-color: #B0D9B1;
+        }
+
+        .container .upimage{
+
+          width:120px;
+          height:auto;
+          margin-left:40%;
+
+        }
+
+        .topnav {
+          overflow: visible;
+          background-color: #363062;
+          width : 100%;
+          height: 50px;
+          position: fixed;
+          top: 0;
+          float:right;
+          padding:1px 0px 1px 0px;
+        }
+
+        
+
+        .dropdown {
+          overflow: hidden;
+          float:right;
+        }
+
+        .dropdown .dropbtn {
+          font-size: 16px;  
+          border: none;
+          outline: none;
+          color: white;
+          padding: 14px 16px;
+          background-color: inherit;
+          font-family: inherit;
+          
+          width:120px;
+          height:50px;
+          margin-top:0px;"
+          float:right;
+        }
+
+        .topnav a {
+          
+          font-size: 16px;
+          text-align: center;
+          padding: 18px 14px 12px 14px;
+          text-decoration: none;
+            
+          color:red;
+          min-width:80px;
+
+          color:red;  
+          height:42%;
+          float:right;
+
+        }   
+
+        .topnav a:hover, .dropdown:hover .dropbtn {
+          background-color: #654E92;
+
+        }
+
+        .topnav .logo-image{
+            width:230px;
+            height:auto;
+            padding-top:2px;
+            padding-left:2px;
+            float:left;
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 180px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+
+        .dropdown-content a {
+          float: none;
+          color: black;
+          padding: 8px;
+          text-decoration: none;
+          display: block;
+          text-align: left;
+          font-family: "Times New Roman", Times, serif;
+          margin-left:10px;
+          margin-right:10px;
+          margin-bottom:1px;
+
+        }
+
+        .dropdown-content a:hover {
+          background-color: #b8b8d1;
+
+        }
+
+        .dropdown:hover .dropdown-content {
+          display: block;
+          margin-top:0px;
+          width:200px;
+          height:150px;
+          right:1px;
+          text-align: center;
+        }
+
+        .sidenav {
+          display: block;
+          height: 100%;
+          width: 230px;
+          position: fixed;
+
+          background-color: #F7F7F7;
+          overflow-x: hidden;
+          top:0%;
+          box-shadow: 0 4px 15px 4px rgba(0, 0, 0, 0.2);
+          margin-top: 51px;
+        }
+
+        .sidenav a {
+          width : 90%;
+
+          padding-right:20px;
+          padding-left:10px;
+          padding-top:20px;
+          padding-bottom:20px;
+
+          text-decoration: none;
+          font-size: 20px;
+          color: black;
+          background-color: #F7F7F7;
+          display: block;
+          font-family: 'Roboto Slab', serif;
+          font-size: 18px;
+
+          color:#512B58 ; 
+          font-weight:bold;
+
+        }
+
+        .sidenav a:hover {
+          color: black;
+          background-color: #DDDDDD;
+
+        }
+
+        .sidenav a.active {
+          background-color: #210124;
+          color: white;
+          padding-right:25px;
+          padding-left:10px;
+          padding-top:16px;
+          padding-bottom:16px;
+          font-size:18px; 
+          font-weight:bold;
+        }
+
+        input[type=file]::file-selector-button {
+          border: 5px solid #040D12;
+          padding: .2em .4em;
+          border-radius: .2em;
+          background-color: #183D3D;
+          width:50%;
+          color:white;
+        }
+
+        input[type=file]::file-selector-button:hover {
+          border: 5px solid #040D12;
+          padding: .2em .4em;
+          border-radius: .2em;
+          background-color: #5C8374;
+          width:50%;
+          color:white;
+        }
+
+            .loading-container {
+          text-align: center;
+          margin-top: 100px;
+        }
+
+        .loading-spinner {
+          border: 6px solid #f3f3f3;
+          border-top: 6px solid #3498db;
+          border-radius: 50%;
+          width: 50px;
+          height: 50px;
+          animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+          font-size: 18px;
+          font-weight: bold;
+          margin-top: 20px;
+        }
+  
+
+    </style>
+</head>
+
+<body>
+    
+    
+    <div class="sidenav" >
+        
+      <a  href="userDashboard" ><i class="fa-solid fa-gauge-high fa-lg"></i>    Dashboard </a>
+
+      <a href="findItem" ><i class="fa-solid fa-magnifying-glass fa-lg"></i>    Find a Lost Item</a>
+
+      <a href="#clients" ><i class="fa-solid fa-plus fa-lg"> </i>    Report a Lost Item</a>
+
+      <a class = "active" href="uploadImage" ><i class="fa-solid fa-plus fa-lg" ></i>    Report a Found Item</a>
+      
+      
+      
+    </div>
+
+    <div class="topnav">
+      <img class="logo-image" src="{% static 'LF/images/logo11.png' %}" alt="LOGO">
+      <div class="dropdown">
+          <button class="dropbtn">
+              <i class="fa-solid fa-user-tie fa-xl"></i>
+          </button>
+          <div class="dropdown-content">
+              <p style="font-family: Sofia, sans-serif; font-size: 20px;">Hello {{ user.first_name }} <p>
+              <a href="#"><i class="fa-solid fa-pen-to-square fa-lg"></i> Change Password</a>
+              <a href="/signout"><i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i> Sign Out</a>
+          </div>
+      </div>
+      <a href="/notifications"><i class="fa-regular fa-bell fa-xl"></i></a>
+        
+    </div>
+
+    <div class = container>
+
+        <img class = "upimage"  src="{% static 'LF/images/upimg.png' %}" align = "center" alt = "LOGO"> 
+        
+        <form id = "my-form"  method = "post" enctype = "multipart/form-data">
+          {% csrf_token %}
+          <p style = "position: absolute; bottom:52%;right:30%; font-family: roboto,sans-serif;font-size:20px;">Upload an image of the Item</p>
+
+          <input type = "file" id = "img" name = "img"  accept=".jpg, .jpeg, .png" style = "position: absolute; bottom:47%;left:40%;">
+
+          <button type = "submit">Upload Image</button>
+          
+          <!--{% if load_animation %}
+            <p align = "center" style = "position: absolute;bottom:100px;right:160px;font-size: 20px;color:#445D48">Analyzing Imaging......</p>
+          {% endif %}-->
+
+          
+
+          <div class="loading-container" id= "loading-message" style="display: none;">
+            <div class="loading-spinner" style="position: absolute;bottom:70px;right:300px;font-size: 20px;color:#445D48"> </div>
+            <div class="loading-text" style = "position: absolute;bottom:50px;right:257px;font-size: 20px;color:#445D48">Analyzing Image...</div>
+          </div>
+
+
+          {% for message in messages %}
+            
+          {% endfor %}
+
+          <div id="error-message" style="display: none; font-size: 20px;color: red;position: absolute;bottom:100px;right:180px;">
+            
+          </div>
+
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#my-form').on('submit', function(e) {
+                e.preventDefault();
+                if ($('input[type="file"]').get(0).files.length === 0) {
+                    $('#error-message').text('*Please select at least one image file.');
+                    $('#error-message').show();
+                } else {
+                    $('#loading-message').show();
+                    $('#error-message').hide();
+                    var formData = new FormData(this);
+                    $.ajax({
+                        url: '{% url 'uploadImage' %}',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(data) {
+                            window.location.href = data.redirect_url + '?context=' + JSON.stringify(data.context);
+                        },
+                        error: function(xhr, textStatus, errorThrown) {
+                            console.log('Error:', errorThrown);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+
+
+</body>
+</html>
